@@ -8,6 +8,7 @@ import * as C from "./styles";
 const Form = ({ handleAdd, transactionsList, setTransactionsList }) => {
   const [desc, setDesc] = useState("");
   const [amount, setAmount] = useState("");
+  const [month, setMonth] = useState("");
   const [isExpense, setExpense] = useState(false);
 
   const generateID = () => Math.round(Math.random() * 1000);
@@ -25,6 +26,7 @@ const Form = ({ handleAdd, transactionsList, setTransactionsList }) => {
       id: generateID(),
       desc: desc,
       amount: amount,
+      month: month,
       expense: isExpense,
     };
 
@@ -32,6 +34,7 @@ const Form = ({ handleAdd, transactionsList, setTransactionsList }) => {
 
     setDesc("");
     setAmount("");
+    setMonth("");
   };
 
   return (
@@ -48,6 +51,10 @@ const Form = ({ handleAdd, transactionsList, setTransactionsList }) => {
             type="number"
             onChange={(e) => setAmount(e.target.value)}
           />
+        </C.InputContent>
+        <C.InputContent>
+          <C.Label>Mês</C.Label>
+          <C.Input value={month} onChange={(e) => setMonth(e.target.value)} />
         </C.InputContent>
         <C.RadioGroup>
           <C.Input
